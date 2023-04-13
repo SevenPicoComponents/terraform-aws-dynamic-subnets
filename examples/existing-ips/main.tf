@@ -9,7 +9,7 @@ module "vpc" {
   ipv4_primary_cidr_block          = "172.16.0.0/16"
   assign_generated_ipv6_cidr_block = false # disable IPv6
 
-  context = module.this.context
+  context = module.context.self
 }
 
 resource "aws_eip" "nat_ips" {
@@ -36,5 +36,5 @@ module "subnets" {
   subnets_per_az_count = var.subnets_per_az_count
   subnets_per_az_names = var.subnets_per_az_names
 
-  context = module.this.context
+  context = module.context.self
 }

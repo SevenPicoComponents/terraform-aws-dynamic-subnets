@@ -10,7 +10,7 @@ module "vpc" {
   assign_generated_ipv6_cidr_block          = true
   ipv6_egress_only_internet_gateway_enabled = true
 
-  context = module.this.context
+  context = module.context.self
 }
 
 module "subnets" {
@@ -34,5 +34,5 @@ module "subnets" {
   subnets_per_az_count = var.subnets_per_az_count
   subnets_per_az_names = var.subnets_per_az_names
 
-  context = module.this.context
+  context = module.context.self
 }

@@ -2,13 +2,13 @@
 # the rest of the code can consume.
 
 locals {
-  enabled = module.this.enabled && (var.public_subnets_enabled || var.private_subnets_enabled) && (var.ipv4_enabled || var.ipv6_enabled)
+  enabled = module.context.enabled && (var.public_subnets_enabled || var.private_subnets_enabled) && (var.ipv4_enabled || var.ipv6_enabled)
 
   # We are going to reference `enabled` a *lot*, so abbreviate it
   e = local.enabled
 
   # Use delimiter shortcut for creating AZ-based Names/IDs
-  delimiter = module.this.delimiter
+  delimiter = module.context.delimiter
 
   # The RFC 6052 "well known" NAT64 CIDR
   nat64_cidr = "64:ff9b::/96"

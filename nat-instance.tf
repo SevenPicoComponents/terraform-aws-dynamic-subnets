@@ -4,12 +4,12 @@
 # NAT Gateways are recommended instead.
 
 module "nat_instance_label" {
-  source  = "cloudposse/label/null"
-  version = "0.25.0"
+  source  = "SevenPico/context/null"
+  version = "2.0.0"
 
   attributes = ["nat", "instance"]
 
-  context = module.this.context
+  context = module.context.self
 }
 
 ## Note: May 2022, although Cloud Posse is generally converting its modules

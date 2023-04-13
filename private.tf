@@ -1,6 +1,6 @@
 module "private_label" {
-  source  = "cloudposse/label/null"
-  version = "0.25.0"
+  source  = "SevenPico/context/null"
+  version = "2.0.0"
 
   attributes = [var.private_label]
   tags = merge(
@@ -8,7 +8,7 @@ module "private_label" {
     var.subnet_type_tag_key != null && var.subnet_type_tag_value_format != null ? { (var.subnet_type_tag_key) = format(var.subnet_type_tag_value_format, var.private_label) } : {}
   )
 
-  context = module.this.context
+  context = module.context.self
 }
 
 resource "aws_subnet" "private" {
