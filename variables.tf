@@ -39,6 +39,8 @@ variable "max_subnet_count" {
     to avoid causing subnets to be destroyed and recreated with smaller IPv4 CIDRs when AWS adds an availability zone.
     Due to Terraform limitations, you can not set `max_subnet_count` from a computed value, you have to set it
     from an explicit constant. For most cases, `3` is a good choice.
+
+    If Outpost ARN is set, then this number should be set to the number of Subnets needed on the Outpost Hardware.
     EOT
   default     = 0
 }
@@ -170,6 +172,15 @@ variable "availability_zone_ids" {
     Useful in some regions when using only some AZs and you want to use the same ones across multiple accounts.
     EOT
   default     = []
+}
+
+variable "outpost_arn" {
+  type        = string
+  description = <<-EOT
+    AWS Outpost ARN . Overrides `availability_zones_ids`.
+    Used when creating subnets on specific AWS Outpost hardware.
+    EOT
+  default     = null
 }
 
 variable "availability_zone_attribute_style" {
