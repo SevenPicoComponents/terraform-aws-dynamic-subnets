@@ -15,7 +15,8 @@ resource "aws_subnet" "public" {
   count = local.public_enabled ? local.subnet_az_count : 0
 
   vpc_id            = local.vpc_id
-  availability_zone = local.subnet_availability_zones[count.index]
+  availability_zone = var.outpost_arn == null ? local.subnet_availability_zones[count.index] : null
+  outpost_arn       = var.outpost_arn
 
   # When provisioning both public and private subnets, the public subnets get the second set of CIDRs.
   # Use element()'s wrap-around behavior to handle the case where we are only provisioning public subnets.

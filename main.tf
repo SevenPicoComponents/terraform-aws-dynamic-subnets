@@ -19,10 +19,12 @@ locals {
   #####################################################################
   ## Determine the set of availability zones in which to deploy subnets
   #  Priority is
+  #  - outpost_arn
   #  - availability_zone_ids
   #  - availability_zones
   #  - data.aws_availability_zones.default
 
+  use_outpost     = local.e && var.outpost_arn != null
   use_az_ids      = local.e && length(var.availability_zone_ids) > 0
   use_az_var      = local.e && length(var.availability_zones) > 0
   use_default_azs = local.e && !(local.use_az_ids || local.use_az_var)
@@ -57,7 +59,7 @@ locals {
   # Copy the AZs taking into account the `subnets_per_az` var
   subnet_availability_zones = flatten([for z in local.vpc_availability_zones : [for net in range(0, var.subnets_per_az_count) : z]])
 
-  subnet_az_count = local.e ? length(local.subnet_availability_zones) : 0
+  subnet_az_count = local.e ? ( var.outpost_arn == null ? length(local.subnet_availability_zones) : var.max_subnet_count ) : 0
 
   # Lookup the abbreviations for the availability zones we are using
   az_abbreviation_map_map = {
