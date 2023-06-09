@@ -15,7 +15,8 @@ resource "aws_subnet" "private" {
   count = local.private_enabled ? local.subnet_az_count : 0
 
   vpc_id            = local.vpc_id
-  availability_zone = local.subnet_availability_zones[count.index]
+  availability_zone = var.outpost_arn == null ? local.subnet_availability_zones[count.index] : null
+  outpost_arn       = var.outpost_arn
 
   cidr_block      = local.private4_enabled ? local.ipv4_private_subnet_cidrs[count.index] : null
   ipv6_cidr_block = local.private6_enabled ? local.ipv6_private_subnet_cidrs[count.index] : null
