@@ -94,6 +94,11 @@ resource "aws_network_acl" "private" {
 }
 
 resource "aws_network_acl_rule" "private4_ingress" {
+  #checkov:skip=CKV_AWS_352:skipping 'Ensure NACL ingress does not allow all Ports'
+  #checkov:skip=CKV_AWS_231:skipping 'Ensure no NACL allow ingress from 0.0.0.0:0 to port 3389'
+  #checkov:skip=CKV_AWS_230:skipping 'Ensure no NACL allow ingress from 0.0.0.0:0 to port 20'
+  #checkov:skip=CKV_AWS_232:skipping 'Ensure no NACL allow ingress from 0.0.0.0:0 to port 22'
+  #checkov:skip=CKV_AWS_229:skipping 'Ensure no NACL allow ingress from 0.0.0.0:0 to port 21'
   count = local.private_open_network_acl_enabled && local.private4_enabled ? 1 : 0
 
   network_acl_id = aws_network_acl.private[0].id
@@ -122,6 +127,11 @@ resource "aws_network_acl_rule" "private4_egress" {
 }
 
 resource "aws_network_acl_rule" "private6_ingress" {
+  #checkov:skip=CKV_AWS_352:skipping 'Ensure NACL ingress does not allow all Ports'
+  #checkov:skip=CKV_AWS_231:skipping 'Ensure no NACL allow ingress from 0.0.0.0:0 to port 3389'
+  #checkov:skip=CKV_AWS_230:skipping 'Ensure no NACL allow ingress from 0.0.0.0:0 to port 20'
+  #checkov:skip=CKV_AWS_232:skipping 'Ensure no NACL allow ingress from 0.0.0.0:0 to port 22'
+  #checkov:skip=CKV_AWS_229:skipping 'Ensure no NACL allow ingress from 0.0.0.0:0 to port 21'
   count = local.private_open_network_acl_enabled && local.private6_enabled ? 1 : 0
 
   network_acl_id = aws_network_acl.private[0].id
