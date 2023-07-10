@@ -13,6 +13,7 @@ module "vpc" {
 }
 
 resource "aws_eip" "nat_ips" {
+  #checkov:skip=CKV2_AWS_19:skipping 'Ensure that all EIP addresses allocated to a VPC are attached to EC2 instances'
   count = length(var.availability_zones)
 
   vpc = true

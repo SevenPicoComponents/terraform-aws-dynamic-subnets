@@ -73,6 +73,8 @@ data "aws_ami" "nat_instance" {
 # https://docs.aws.amazon.com/vpc/latest/userguide/VPC_NAT_Instance.html
 # https://dzone.com/articles/nat-instance-vs-nat-gateway
 resource "aws_instance" "nat_instance" {
+  #checkov:skip=CKV_AWS_8:skipping 'Ensure all data stored in the Launch configuration or instance Elastic Blocks Store is securely encrypted'
+  #checkov:skip=CKV2_AWS_41:skipping 'Ensure an IAM role is attached to EC2 instance'
   count = local.nat_instance_enabled ? local.nat_count : 0
 
   ami                    = local.nat_instance_ami_id

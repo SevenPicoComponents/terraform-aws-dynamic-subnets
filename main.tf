@@ -1,6 +1,7 @@
 # Process all the optional inputs into a fully fleshed out configuration
 # the rest of the code can consume.
 
+
 locals {
   enabled = module.context.enabled && (var.public_subnets_enabled || var.private_subnets_enabled) && (var.ipv4_enabled || var.ipv6_enabled)
 
@@ -57,9 +58,8 @@ locals {
 
 
   # Copy the AZs taking into account the `subnets_per_az` var
-  subnet_availability_zones = flatten([for z in local.vpc_availability_zones : [for net in range(0, var.subnets_per_az_count) : z]])
-
-  subnet_az_count = local.e ? ( var.outpost_arn == null ? length(local.subnet_availability_zones) : var.max_subnet_count ) : 0
+  subnet_availability_zones = var.outpost_arn == null ? flatten([for z in local.vpc_availability_zones : [for net in range(0, var.subnets_per_az_count) : z]]) :try(length([data.aws_outposts_outpost.default[0].availability_zone]), [])
+  subnet_az_count = local.e ?  length(local.subnet_availability_zones) :  0
 
   # Lookup the abbreviations for the availability zones we are using
   az_abbreviation_map_map = {
@@ -258,6 +258,11 @@ locals {
       }
     ])
   }
+}
+
+data "aws_outposts_outpost" "default" {
+  count = local.e && var.outpost_arn != null ? 1 : 0
+  arn = var.outpost_arn
 }
 
 data "aws_availability_zones" "default" {
