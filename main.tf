@@ -58,8 +58,10 @@ locals {
 
 
   # Copy the AZs taking into account the `subnets_per_az` var
-  subnet_availability_zones = var.outpost_arn == null ? flatten([for z in local.vpc_availability_zones : [for net in range(0, var.subnets_per_az_count) : z]]) :try(length([data.aws_outposts_outpost.default[0].availability_zone]), [])
-  subnet_az_count = local.e ?  length(local.subnet_availability_zones) :  0
+  #  subnet_availability_zones = var.outpost_arn == null ? flatten([for z in local.vpc_availability_zones : [for net in range(0, var.subnets_per_az_count) : z]]) : try(length([data.aws_outposts_outpost.default[0].availability_zone]), [])
+  subnet_availability_zones = var.outpost_arn == null ? flatten([for z in local.vpc_availability_zones : [for net in range(0, var.subnets_per_az_count) : z]]) : try([data.aws_outposts_outpost.default[0].availability_zone], [])
+
+  subnet_az_count = local.e ? length(local.subnet_availability_zones) : 0
 
   # Lookup the abbreviations for the availability zones we are using
   az_abbreviation_map_map = {
@@ -262,7 +264,7 @@ locals {
 
 data "aws_outposts_outpost" "default" {
   count = local.e && var.outpost_arn != null ? 1 : 0
-  arn = var.outpost_arn
+  arn   = var.outpost_arn
 }
 
 data "aws_availability_zones" "default" {
