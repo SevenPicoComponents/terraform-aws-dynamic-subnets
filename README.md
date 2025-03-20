@@ -169,7 +169,7 @@ to reserve these CIDRs, set `max_subnet_count` to the number of zones you are ac
 
 ## Copyright
 
-Copyright © 2017-2023 [SevenPico](https://sevenpico.com)
+Copyright 2023 SevenPico, Inc.
 
 ## License
 
@@ -195,36 +195,3 @@ KIND, either express or implied.  See the License for the
 specific language governing permissions and limitations
 under the License.
 ```
-
-<!-- markdownlint-disable -->
-  [logo]: https://sevenpico.com/logo-300x69.svg
-  [docs]: https://sevenpico.com/docs?utm_source=github&utm_medium=readme&utm_campaign=sevenpicocomponents/terraform-aws-dynamic-subnets&utm_content=docs
-  [website]: https://sevenpico.com/homepage?utm_source=github&utm_medium=readme&utm_campaign=sevenpicocomponents/terraform-aws-dynamic-subnets&utm_content=website
-  [github]: https://sevenpico.com/github?utm_source=github&utm_medium=readme&utm_campaign=sevenpicocomponents/terraform-aws-dynamic-subnets&utm_content=github
-  [jobs]: https://sevenpico.com/jobs?utm_source=github&utm_medium=readme&utm_campaign=sevenpicocomponents/terraform-aws-dynamic-subnets&utm_content=jobs
-  [hire]: https://sevenpico.com/hire?utm_source=github&utm_medium=readme&utm_campaign=sevenpicocomponents/terraform-aws-dynamic-subnets&utm_content=hire
-  [slack]: https://sevenpico.com/slack?utm_source=github&utm_medium=readme&utm_campaign=sevenpicocomponents/terraform-aws-dynamic-subnets&utm_content=slack
-  [linkedin]: https://sevenpico.com/linkedin?utm_source=github&utm_medium=readme&utm_campaign=sevenpicocomponents/terraform-aws-dynamic-subnets&utm_content=linkedin
-  [twitter]: https://sevenpico.com/twitter?utm_source=github&utm_medium=readme&utm_campaign=sevenpicocomponents/terraform-aws-dynamic-subnets&utm_content=twitter
-  [testimonial]: https://sevenpico.com/leave-testimonial?utm_source=github&utm_medium=readme&utm_campaign=sevenpicocomponents/terraform-aws-dynamic-subnets&utm_content=testimonial
-  [office_hours]: https://sevenpico.com/office-hours?utm_source=github&utm_medium=readme&utm_campaign=sevenpicocomponents/terraform-aws-dynamic-subnets&utm_content=office_hours
-  [newsletter]: https://sevenpico.com/newsletter?utm_source=github&utm_medium=readme&utm_campaign=sevenpicocomponents/terraform-aws-dynamic-subnets&utm_content=newsletter
-  [discourse]: https://ask.sevenpico.com/?utm_source=github&utm_medium=readme&utm_campaign=sevenpicocomponents/terraform-aws-dynamic-subnets&utm_content=discourse
-  [email]: https://sevenpico.com/email?utm_source=github&utm_medium=readme&utm_campaign=sevenpicocomponents/terraform-aws-dynamic-subnets&utm_content=email
-  [commercial_support]: https://sevenpico.com/commercial-support?utm_source=github&utm_medium=readme&utm_campaign=sevenpicocomponents/terraform-aws-dynamic-subnets&utm_content=commercial_support
-  [we_love_open_source]: https://sevenpico.com/we-love-open-source?utm_source=github&utm_medium=readme&utm_campaign=sevenpicocomponents/terraform-aws-dynamic-subnets&utm_content=we_love_open_source
-  [terraform_modules]: https://sevenpico.com/terraform-modules?utm_source=github&utm_medium=readme&utm_campaign=sevenpicocomponents/terraform-aws-dynamic-subnets&utm_content=terraform_modules
-  [readme_header_img]: https://sevenpico.com/readme/header/img
-  [readme_header_link]: https://sevenpico.com/readme/header/link?utm_source=github&utm_medium=readme&utm_campaign=sevenpicocomponents/terraform-aws-dynamic-subnets&utm_content=readme_header_link
-  [readme_footer_img]: https://sevenpico.com/readme/footer/img
-  [readme_footer_link]: https://sevenpico.com/readme/footer/link?utm_source=github&utm_medium=readme&utm_campaign=sevenpicocomponents/terraform-aws-dynamic-subnets&utm_content=readme_footer_link
-  [readme_commercial_support_img]: https://sevenpico.com/readme/commercial-support/img
-  [readme_commercial_support_link]: https://sevenpico.com/readme/commercial-support/link?utm_source=github&utm_medium=readme&utm_campaign=sevenpicocomponents/terraform-aws-dynamic-subnets&utm_content=readme_commercial_support_link
-  [share_twitter]: https://twitter.com/intent/tweet/?text=terraform-aws-dynamic-subnets&url=https://github.com/sevenpicocomponents/terraform-aws-dynamic-subnets
-  [share_linkedin]: https://www.linkedin.com/shareArticle?mini=true&title=terraform-aws-dynamic-subnets&url=https://github.com/sevenpicocomponents/terraform-aws-dynamic-subnets
-  [share_reddit]: https://reddit.com/submit/?url=https://github.com/sevenpicocomponents/terraform-aws-dynamic-subnets
-  [share_facebook]: https://facebook.com/sharer/sharer.php?u=https://github.com/sevenpicocomponents/terraform-aws-dynamic-subnets
-  [share_googleplus]: https://plus.google.com/share?url=https://github.com/sevenpicocomponents/terraform-aws-dynamic-subnets
-  [share_email]: mailto:?subject=terraform-aws-dynamic-subnets&body=https://github.com/sevenpicocomponents/terraform-aws-dynamic-subnets
-  [beacon]: https://ga-beacon.sevenpico.com/UA-76589703-4/sevenpicocomponents/terraform-aws-dynamic-subnets?pixel&cs=github&cm=readme&an=terraform-aws-dynamic-subnets
-<!-- markdownlint-restore -->
