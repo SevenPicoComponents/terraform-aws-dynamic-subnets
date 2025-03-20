@@ -68,11 +68,12 @@ at zero. (You have the option of specifying a list of CIDRs instead.) As with IP
 cover `max_subnet_count` private and public subnets (when both are enabled, which is the default), with the private
 subnets being allocated out of the lower half of the reservation and the public subnets allocated out of the upper half.
 
-
-
+Note that this means that, for example, in a region with 4 availability zones, if you specify only 3 availability zones 
+in `var.availability_zones`, this module will still reserve CIDRs for the 4th zone. This is so that if you later
+want to expand into that zone, the existing subnet CIDR assignments will not be disturbed. If you do not want
+to reserve these CIDRs, set `max_subnet_count` to the number of zones you are actually using.
 
 ## Usage
-
 
 **IMPORTANT:** We do not pin modules to versions in our examples because of the
 difficulty of keeping the versions in the documentation in sync with the latest released versions.
@@ -83,7 +84,6 @@ systematic way so that they do not catch you by surprise.
 Also, because of a bug in the Terraform registry ([hashicorp/terraform#21417](https://github.com/hashicorp/terraform/issues/21417)),
 the registry shows many of our inputs as required when in fact they are optional.
 The table below correctly indicates which inputs are required.
-
 
 ```hcl
 module "subnets" {
@@ -128,11 +128,6 @@ resource "aws_route" "private" {
 }
 ```
 
-
-
-
-
-
 ## Subnet calculation logic
 
 `terraform-aws-dynamic-subnets` creates a set of subnets based on various CIDR inputs and 
@@ -167,30 +162,10 @@ private_subnet_cidrs = [ for netnumber in range(0, existing_az_count): cidrsubne
 public_subnet_cidrs = [ for netnumber in range(existing_az_count, existing_az_count * 2): cidrsubnet(cidr_block, subnet_bits, netnumber) ]
 ```
 
-
 Note that this means that, for example, in a region with 4 availability zones, if you specify only 3 availability zones 
 in `var.availability_zones`, this module will still reserve CIDRs for the 4th zone. This is so that if you later
 want to expand into that zone, the existing subnet CIDR assignments will not be disturbed. If you do not want
 to reserve these CIDRs, set `max_subnet_count` to the number of zones you are actually using.
-
-## Share the Love
-
-Like this project? Please give it a ★ on [our GitHub](https://github.com/sevenpicocomponents/terraform-aws-dynamic-subnets)! (it helps us **a lot**)
-
-## Related Projects
-
-Check out these related projects.
-
-- [terraform-aws-vpc](https://github.com/sevenpicocomponents/terraform-aws-vpc) - Terraform Module that defines a VPC with public/private subnets across multiple AZs with Internet Gateways
-- [terraform-aws-vpc-peering](https://github.com/sevenpicocomponents/terraform-aws-vpc-peering) - Terraform module to create a peering connection between two VPCs
-- [terraform-aws-kops-vpc-peering](https://github.com/sevenpicocomponents/terraform-aws-kops-vpc-peering) - Terraform module to create a peering connection between a backing services VPC and a VPC created by Kops
-- [terraform-aws-named-subnets](https://github.com/sevenpicocomponents/terraform-aws-named-subnets) - Terraform module for named subnets provisioning.
-
-## Help
-
-**Got a question?** We got answers.
-
-File a GitHub [issue](https://github.com/sevenpicocomponents/terraform-aws-dynamic-subnets/issues), send us an [email][email] or join our [Slack Community][slack].
 
 ## Copyright
 
@@ -221,20 +196,6 @@ specific language governing permissions and limitations
 under the License.
 ```
 
-## About
-
-This project is maintained and funded by [SevenPico](https://sevenpico.com). Like it? Please let us know by [leaving a testimonial][testimonial]!
-
-[![SevenPico][logo]][website]
-
-We're a [DevOps Professional Services][hire] company based in Los Angeles, CA. We ❤️  [Open Source Software][we_love_open_source].
-
-We offer [paid support][commercial_support] on all of our projects.
-
-Check out [our other projects][github], [follow us on twitter][twitter], [apply for a job][jobs], or [hire us][hire] to help with your cloud strategy and implementation.
-
-[![README Footer][readme_footer_img]][readme_footer_link]
-[![Beacon][beacon]][website]
 <!-- markdownlint-disable -->
   [logo]: https://sevenpico.com/logo-300x69.svg
   [docs]: https://sevenpico.com/docs?utm_source=github&utm_medium=readme&utm_campaign=sevenpicocomponents/terraform-aws-dynamic-subnets&utm_content=docs
