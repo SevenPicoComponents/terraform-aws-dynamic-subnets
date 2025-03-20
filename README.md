@@ -1,6 +1,5 @@
-
 <!-- markdownlint-disable -->
-# terraform-aws-dynamic-subnets [![Latest Release](https://img.shields.io/github/release/cloudposse/terraform-aws-dynamic-subnets.svg)](https://github.com/cloudposse/terraform-aws-dynamic-subnets/releases/latest) [![Slack Community](https://slack.cloudposse.com/badge.svg)](https://slack.cloudposse.com)
+# terraform-aws-dynamic-subnets [![Latest Release](https://img.shields.io/github/release/sevenpicocomponents/terraform-aws-dynamic-subnets.svg)](https://github.com/sevenpicocomponents/terraform-aws-dynamic-subnets/releases/latest) [![Slack Community](https://slack.cloudposse.com/badge.svg)](https://slack.cloudposse.com)
 <!-- markdownlint-restore -->
 
 [![README Header][readme_header_img]][readme_header_link]
@@ -32,7 +31,7 @@ Terraform module to provision public and private [`subnets`](https://docs.aws.am
 
 
 __Note:__ This module is intended for use with an existing VPC and existing Internet Gateway.
-To create a new VPC, use [terraform-aws-vpc](https://github.com/cloudposse/terraform-aws-vpc) module.
+To create a new VPC, use [terraform-aws-vpc](https://github.com/sevenpicocomponents/terraform-aws-vpc) module.
 
 __Note:__ Due to Terraform [limitations](https://github.com/hashicorp/terraform/issues/26755#issuecomment-719103775),
 many optional inputs to this module are specified as a `list(string)` that can have zero or one element, rather than
@@ -160,8 +159,8 @@ The table below correctly indicates which inputs are required.
 
 ```hcl
 module "subnets" {
-  source = "cloudposse/dynamic-subnets/aws"
-  # Cloud Posse recommends pinning every module to a specific version
+  source = "sevenpicocomponents/dynamic-subnets/aws"
+  # We recommend pinning every module to a specific version
   # version = "x.x.x"
   namespace           = "eg"
   stage               = "prod"
@@ -177,8 +176,8 @@ Create only private subnets, route to transit gateway:
 
 ```hcl
 module "private_tgw_subnets" {
-  source = "cloudposse/dynamic-subnets/aws"
-  # Cloud Posse recommends pinning every module to a specific version
+  source = "sevenpicocomponents/dynamic-subnets/aws"
+  # We recommend pinning every module to a specific version
   # version = "x.x.x"
   namespace           = "eg"
   stage               = "prod"
@@ -275,12 +274,13 @@ Available targets:
 
 | Name | Source | Version |
 |------|--------|---------|
-| <a name="module_nat_instance_label"></a> [nat\_instance\_label](#module\_nat\_instance\_label) | cloudposse/label/null | 0.25.0 |
-| <a name="module_nat_label"></a> [nat\_label](#module\_nat\_label) | cloudposse/label/null | 0.25.0 |
-| <a name="module_private_label"></a> [private\_label](#module\_private\_label) | cloudposse/label/null | 0.25.0 |
-| <a name="module_public_label"></a> [public\_label](#module\_public\_label) | cloudposse/label/null | 0.25.0 |
-| <a name="module_this"></a> [this](#module\_this) | cloudposse/label/null | 0.25.0 |
-| <a name="module_utils"></a> [utils](#module\_utils) | cloudposse/utils/aws | 1.1.0 |
+| <a name="module_context"></a> [context](#module\_context) | sevenpicocomponents/context/null | 2.0.0 |
+| <a name="module_nat_instance_label"></a> [nat\_instance\_label](#module\_nat\_instance\_label) | sevenpicocomponents/label/null | 0.25.0 |
+| <a name="module_nat_label"></a> [nat\_label](#module\_nat\_label) | sevenpicocomponents/label/null | 0.25.0 |
+| <a name="module_private_label"></a> [private\_label](#module\_private\_label) | sevenpicocomponents/label/null | 0.25.0 |
+| <a name="module_public_label"></a> [public\_label](#module\_public\_label) | sevenpicocomponents/label/null | 0.25.0 |
+| <a name="module_this"></a> [this](#module\_this) | sevenpicocomponents/label/null | 0.25.0 |
+| <a name="module_utils"></a> [utils](#module\_utils) | sevenpicocomponents/utils/aws | 1.1.0 |
 
 ## Resources
 
